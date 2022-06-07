@@ -12,6 +12,10 @@ Can also be installed in VS Code: Launch VS Code Quick Open (Ctrl+P), paste the 
 ext install lgtome.tb-config
 ```
 
+## Usage
+
+This extension grants full autocomplete to `tb.config.json` and `.tbconfigrc` by default.
+
 ## Commands
 
 Use Ctrl+Shift+P and type:
