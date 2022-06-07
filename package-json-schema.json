@@ -1,0 +1,93 @@
+{
+    "title": "TB",
+    "description": "Templates builder config",
+    "type": "object",
+    "properties": {
+        "entry": {
+            "description": "Absolute directory from which the files are generated",
+            "type": "string",
+            "default": "src"
+        },
+        "adjustVars": {
+            "description": "Sub-files, like props or styles",
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "default": ["index"]
+        },
+        "transformType": {
+            "description": "Names transform strategy",
+            "oneOf": [
+                {
+                    "enum": ["camel"]
+                },
+                {
+                    "enum": ["kebab"]
+                },
+                {
+                    "enum": ["snake"]
+                },
+                {
+                    "enum": ["pascal"]
+                }
+            ],
+            "default": "camel"
+        },
+        "extension": {
+            "description": "Files extension",
+            "oneOf": [
+                {
+                    "enum": ["js"]
+                },
+                {
+                    "enum": ["ts"]
+                }
+            ],
+            "default": "js"
+        },
+        "framework": {
+            "description": "Framework based generation",
+            "oneOf": [
+                {
+                    "enum": ["react"]
+                },
+                {
+                    "enum": ["vue"]
+                }
+            ],
+            "default": "react"
+        },
+        "folders": {
+            "description": "Additional folders, which will be on the endpoint",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "templates": {
+            "description": "Path to the templates files, json format, see Templates",
+            "type": "string"
+        },
+        "fileNameSeparator": {
+            "description": "Filename separator strategy",
+            "oneOf": [
+                {
+                    "enum": ["."]
+                },
+                {
+                    "enum": ["-"]
+                },
+                {
+                    "enum": ["_"]
+                }
+            ],
+            "default": "."
+        },
+        "reExport": {
+            "description": "Creates index file, which re-export fn from the main",
+            "type": "boolean",
+            "default": true
+        }
+    }
+}

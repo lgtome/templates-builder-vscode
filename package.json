@@ -1,0 +1,211 @@
+{
+    "name": "tb-config",
+    "displayName": "tb-cfg",
+    "description": "Templates builder config autocomplete",
+    "publisher": "lgtome",
+    "homepage": "https://marketplace.visualstudio.com/items?itemName=lgtome.tb-config",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/lgtome/templates-builder.git"
+    },
+    "icon": "icon.png",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.67.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onStartupFinished",
+        "onCommand:tb.CreateConfig"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "tb.CreateConfig",
+                "title": "Templates builder: Create config"
+            }
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "%ext.config.title%",
+            "properties": {
+                "tb.entry": {
+                    "description": "Absolute directory from which the files are generated",
+                    "type": "string",
+                    "default": "src",
+                    "markdownDescription": "%ext.config.entry%",
+                    "scope": "resource"
+                },
+                "tb.adjustVars": {
+                    "description": "Sub-files, like props or styles",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "index"
+                    ],
+                    "markdownDescription": "%ext.config.adjustVars%",
+                    "scope": "resource"
+                },
+                "tb.transformType": {
+                    "description": "Names transform strategy",
+                    "oneOf": [
+                        {
+                            "enum": [
+                                "camel"
+                            ]
+                        },
+                        {
+                            "enum": [
+                                "kebab"
+                            ]
+                        },
+                        {
+                            "enum": [
+                                "snake"
+                            ]
+                        },
+                        {
+                            "enum": [
+                                "pascal"
+                            ]
+                        }
+                    ],
+                    "default": "camel",
+                    "markdownDescription": "%ext.config.transformType%",
+                    "scope": "resource"
+                },
+                "tb.extension": {
+                    "description": "Files extension",
+                    "oneOf": [
+                        {
+                            "enum": [
+                                "js"
+                            ]
+                        },
+                        {
+                            "enum": [
+                                "ts"
+                            ]
+                        }
+                    ],
+                    "default": "js",
+                    "markdownDescription": "%ext.config.extension%",
+                    "scope": "resource"
+                },
+                "tb.framework": {
+                    "description": "Framework based generation",
+                    "oneOf": [
+                        {
+                            "enum": [
+                                "react"
+                            ]
+                        },
+                        {
+                            "enum": [
+                                "vue"
+                            ]
+                        }
+                    ],
+                    "default": "react",
+                    "markdownDescription": "%ext.config.framework%",
+                    "scope": "resource"
+                },
+                "tb.folders": {
+                    "description": "Additional folders, which will be on the endpoint",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "markdownDescription": "%ext.config.folders%",
+                    "scope": "resource"
+                },
+                "tb.templates": {
+                    "description": "Path to the templates files, json format, see Templates",
+                    "type": "string",
+                    "markdownDescription": "%ext.config.templates%",
+                    "scope": "resource"
+                },
+                "tb.fileNameSeparator": {
+                    "description": "Filename separator strategy",
+                    "oneOf": [
+                        {
+                            "enum": [
+                                "."
+                            ]
+                        },
+                        {
+                            "enum": [
+                                "-"
+                            ]
+                        },
+                        {
+                            "enum": [
+                                "_"
+                            ]
+                        }
+                    ],
+                    "default": ".",
+                    "markdownDescription": "%ext.config.fileNameSeparator%",
+                    "scope": "resource"
+                },
+                "tb.reExport": {
+                    "description": "Creates index file, which re-export fn from the main",
+                    "type": "boolean",
+                    "default": true,
+                    "markdownDescription": "%ext.config.reExport%",
+                    "scope": "resource"
+                }
+            }
+        },
+        "jsonValidation": [
+            {
+                "fileMatch": "tb.config.json",
+                "url": "./package-json-schema.json"
+            },
+            {
+                "fileMatch": ".tbconfigrc",
+                "url": "./package-json-schema.json"
+            }
+        ],
+        "languages": [
+            {
+                "id": "json",
+                "filenames": [
+                    "tb.config.json"
+                ]
+            },
+            {
+                "id": "json",
+                "filenames": [
+                    ".tbconfigrc"
+                ]
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "pretest": "npm run compile && npm run lint",
+        "lint": "eslint src --ext ts",
+        "test": "node ./out/test/runTest.js"
+    },
+    "devDependencies": {
+        "@types/vscode": "^1.67.0",
+        "@types/glob": "^7.2.0",
+        "@types/mocha": "^9.1.1",
+        "@types/node": "16.x",
+        "@typescript-eslint/eslint-plugin": "^5.27.0",
+        "@typescript-eslint/parser": "^5.27.0",
+        "eslint": "^8.16.0",
+        "glob": "^8.0.3",
+        "mocha": "^10.0.0",
+        "typescript": "^4.7.2",
+        "@vscode/test-electron": "^2.1.3"
+    }
+}
