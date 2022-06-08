@@ -18,7 +18,8 @@
     ],
     "activationEvents": [
         "onStartupFinished",
-        "onCommand:tb.CreateConfig"
+        "onCommand:tb.CreateConfig",
+        "onCommand:tb.CreateTemplateFile"
     ],
     "main": "./out/extension.js",
     "contributes": {
@@ -26,6 +27,10 @@
             {
                 "command": "tb.CreateConfig",
                 "title": "Templates builder: Create config"
+            },
+            {
+                "command": "tb.CreateTemplateFile",
+                "title": "Templates builder: Create template file from config"
             }
         ],
         "configuration": {
@@ -193,7 +198,8 @@
         "watch": "tsc -watch -p ./",
         "pretest": "npm run compile && npm run lint",
         "lint": "eslint src --ext ts",
-        "test": "node ./out/test/runTest.js"
+        "test": "node ./out/test/runTest.js",
+        "publish:patch": "vsce version patch && vsce publish"
     },
     "devDependencies": {
         "@types/vscode": "^1.67.0",

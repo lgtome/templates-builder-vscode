@@ -25,3 +25,13 @@ Templates builder: Create config
 ```
 
 to generate config file from the scratch.
+
+```
+Templates builder: Templates builder: Create template file from config
+```
+
+to generate templates folder with templates file from current configuration
+
+## Goals
+
+-   Add custom templates
