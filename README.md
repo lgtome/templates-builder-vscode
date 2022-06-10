@@ -4,6 +4,8 @@
 
 ## Installation
 
+Instal via link: [VSCode tb-cfg](https://marketplace.visualstudio.com/items?itemName=lgtome.tb-config)
+
 Install through VS Code extensions. Search for `tb-cfg`
 
 Can also be installed in VS Code: Launch VS Code Quick Open (Ctrl+P), paste the following command, and press enter.
